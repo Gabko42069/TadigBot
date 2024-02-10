@@ -17,5 +17,6 @@ void tester()
 {
     lemlib::Pose pose(0,0,0);
     chassis.setPose(pose);
-    chassis.moveToPoint(0,24,2000);
+    chassis.turnToHeading(90,1000);
+    
 }

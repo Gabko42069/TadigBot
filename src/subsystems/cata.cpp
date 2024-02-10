@@ -20,7 +20,7 @@ void cataAysnc() {
   setCata(127);
   pros::delay(30);
   setCata(0);
-  while(rotation.get_position() < 15000) { //change value
+  while(rotation.get_position() < 14000) { //change value
     setCata(127);
     pros::delay(10);
   }
