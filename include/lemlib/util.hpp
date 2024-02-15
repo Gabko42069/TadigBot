@@ -1,7 +1,17 @@
+/**
+ * @file include/lemlib/util.hpp
+ * @author LemLib Team
+ * @brief Utility functions declarations
+ * @version 0.4.5
+ * @date 2023-01-15
+ *
+ * @copyright Copyright (c) 2023
+ *
+ */
+
 #pragma once
 
 #include <vector>
-#include <math.h>
 #include "lemlib/pose.hpp"
 
 namespace lemlib {
@@ -22,7 +32,7 @@ float slew(float target, float current, float maxChange);
  * @param rad radians
  * @return float degrees
  */
-constexpr float radToDeg(float rad) { return rad * 180 / M_PI; }
+float radToDeg(float rad);
 
 /**
  * @brief Convert degrees to radians
@@ -30,7 +40,7 @@ constexpr float radToDeg(float rad) { return rad * 180 / M_PI; }
  * @param deg degrees
  * @return float radians
  */
-constexpr float degToRad(float deg) { return deg * M_PI / 180; }
+float degToRad(float deg);
 
 /**
  * @brief Calculate the error between 2 angles. Useful when calculating the error between 2 headings
@@ -40,7 +50,7 @@ constexpr float degToRad(float deg) { return deg * M_PI / 180; }
  * @param radians true if angle is in radians, false if not. False by default
  * @return float wrapped angle
  */
-float angleError(float angle1, float angle2, bool radians = true);
+float angleError(float angle1, float angle2, bool radians = false);
 
 /**
  * @brief Return the sign of a number
@@ -48,7 +58,7 @@ float angleError(float angle1, float angle2, bool radians = true);
  * @param x the number to get the sign of
  * @return int - -1 if negative, 1 if positive
  */
-template <typename T> constexpr T sgn(T value) { return value < 0 ? -1 : 1; }
+int sgn(float x);
 
 /**
  * @brief Return the average of a vector of numbers

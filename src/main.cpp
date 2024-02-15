@@ -7,13 +7,13 @@
  * "I was pressed!" and nothing.
  */
 void on_center_button() {
-	static bool pressed = false;
-	pressed = !pressed;
-	if (pressed) {
-		pros::lcd::set_text(2, "I was pressed!");
-	} else {
-		pros::lcd::clear_line(2);
-	}
+  static bool pressed = false;
+  pressed = !pressed;
+  if (pressed) {
+    pros::lcd::set_text(2, "I was pressed!");
+  } else {
+    pros::lcd::clear_line(2);
+  }
 }
 
 /**
@@ -23,10 +23,9 @@ void on_center_button() {
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
-	pros::lcd::initialize();
-	pros::lcd::set_text(1, "Hello PROS User!");
-	chassis.calibrate();
-	pros::lcd::register_btn1_cb(on_center_button);
+  pros::lcd::initialize();
+  pros::lcd::set_text(1, "Hello PROS User!");
+  chassis.calibrate();
 }
 
 /**
@@ -59,8 +58,13 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-	chassis.setBrakeMode(pros::E_MOTOR_BRAKE_BRAKE);
-	tester();
+  setDriveBrake(MOTOR_BRAKE_BRAKE);
+  leftWP();
+  //  moveIn(48, 2000, false, true);
+  // turnDegree(180, true);
+  pros::lcd::print(0, "X: %f", chassis.getPose().x); // x
+  pros::lcd::print(1, "Y: %f", chassis.getPose().y); // y
+  pros::lcd::print(2, "Theta: %f", chassis.getPose().theta);
 }
 
 /**
@@ -77,14 +81,14 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-	chassis.setBrakeMode(pros::E_MOTOR_BRAKE_COAST);
-	while (true) {
-		tankDrive();
-		controlIntake();
-		liftControl();
-		controlWings();
-		controlCata();
+  setDriveBrake(pros::E_MOTOR_BRAKE_COAST);
+  while (true) {
+    tankDrive();
+    controlIntake();
+    liftControl();
+    controlWings();
+    controlCata();
 
-		pros::delay(20);
-	}
+    pros::delay(20);
+  }
 }

@@ -25,11 +25,17 @@ extern bool ptoMode;
 //lemlib(the active ingredient)
 extern pros::MotorGroup left_side_motors;
 extern pros::MotorGroup right_side_motors;
-
+/*
 extern lemlib::Drivetrain drivetrain;
 extern lemlib::ControllerSettings linearController;
 extern lemlib::ControllerSettings angularController;
 extern lemlib::OdomSensors sensors;
+*/
+
+extern lemlib::Drivetrain_t drivetrain;
+extern lemlib::OdomSensors_t sensors;
+extern lemlib::ChassisController_t lateralController;
+extern lemlib::ChassisController_t angularController;
 extern lemlib::Chassis chassis;
 
 //pistons and such
