@@ -1,8 +1,5 @@
 #include "lemlib/api.hpp"
-#include "lemlib/chassis/chassis.hpp"
-#include "lemlib/pose.hpp"
 #include "main.h"
-#include "pros/motors.h"
 
 void sixBall() {
   chassis.setPose(40, -57, 0);
@@ -37,16 +34,35 @@ void sixBall() {
 }
 
 void leftWP() {
-  cataAysnc();
+  //cataAysnc();
   chassis.setPose(-41.149, -53.425, 90);
-  chassis.turnTo(-32.969, -63.159, 1000);
-  moveIn(27, 1000, false, false);
-  // chassis.moveTo(-56.163, -34.891, 140, 1200, false, false, 0, 0);
-  chassis.turnTo(-55, 0, 1500, false, true, 70);
-  moveIn(3, 1000, false, false);
-  moveIn(7, 1000, false, true);
-  pros::delay(400);
+  chassis.turnTo(-30.115, -62.585, 1000);// TURN butt TO GOAL
+  //moveIn(27, 1000, false, false);
+  chassis.moveTo(-57.876, -39.452, 130, 1200, false, false, 0, 0); //drive diag to goal
+  chassis.turnTo(-57.876, 0, 1500, false, true, 70); //turn butt to goal straight
+  chassis.moveTo(-57.876, -33, 180, 1000, false, false, 0, 0); //puash ball in goal
+  chassis.moveTo(-57.876, -38, 180, 1000); //get away from goal
+  chassis.turnTo(-44.615,-53.175 , 1500); //turn to mathload
+  pros::delay(200);
+  chassis.moveTo(-44.615,-53.175, 145,1500,false,true,0,0);//move to mathload
+  backLeftWing.set_value(!backLeftWing.get_value());
+  chassis.turnTo(-32,-53.175,1000,false);
+  chassis.turnTo(-44.615, -32, 1000);
+  chassis.turnTo(-50,-53.175,1000,false);
+
+
+  //moveIn(3, 1000, false, false);
+  //moveIn(7, 1000, false, true);
+  
+  /*
+  pros::c::delay(400);
   chassis.turnTo(-55, 0, 1500, false, false, 70);
+  moveIn(6,1000,false,false);
+  chassis.turnTo(-42, -60, 1000, false,true);
+  backLeftWing.set_value(!backLeftWing.get_value());
+  moveIn(12,1500,false,false);
+  */
+
   // turnDegree(90, true);
   // turnDegree(0, true);
   //  turnDegree(0, true);
