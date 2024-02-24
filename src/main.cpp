@@ -59,8 +59,8 @@ void competition_initialize() {}
  */
 void autonomous() {
   setDriveBrake(MOTOR_BRAKE_BRAKE);
-  leftWP();
-  //  moveIn(48, 2000, false, true);
+  sixBall();
+    //  moveIn(48, 2000, false, true);
   // turnDegree(180, true);
   pros::lcd::print(0, "X: %f", chassis.getPose().x); // x
   pros::lcd::print(1, "Y: %f", chassis.getPose().y); // y
@@ -87,7 +87,7 @@ void opcontrol() {
     controlIntake();
     liftControl();
     controlWings();
-    controlCata();
+    //controlCata();
 
     pros::delay(20);
   }

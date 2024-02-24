@@ -19,8 +19,8 @@ pros::Controller controller(pros ::E_CONTROLLER_MASTER);
 
 pros::Imu inertial(inertialPort);
 pros::Rotation rotation(rotationPort);
-pros::ADIEncoder shaftEncoder('H', 'G');
-lemlib::TrackingWheel vertTrackingWheel(&shaftEncoder, 2.75, 2, 1);
+//pros::ADIEncoder shaftEncoder('H', 'G');
+//lemlib::TrackingWheel vertTrackingWheel(&shaftEncoder, 2.75, 2, 1);
 bool ptoMode = false;
 
 pros::ADIPort backLeftWing(backLeftWingPort, pros::E_ADI_DIGITAL_OUT);
@@ -76,17 +76,17 @@ lemlib::ChassisController_t lateralController = {
     15,  // kP15
     59,  // kD15
     1,   // smallErrorRange
-    200, // smallErrorTimeout
+    100, // smallErrorTimeout
     3,   // largeErrorRange
-    400  // largeErrorTimeout
+    500  // largeErrorTimeout
 };       // slew rate
 lemlib::ChassisController_t angularController = {
     2.2, // kP
     12,  // kD
     1,   // smallErrorRange
-    300, // smallErrorTimeout
+    100, // smallErrorTimeout
     3,   // largeErrorRange
-    500  // largeErrorTimeout
+    400  // largeErrorTimeout
 };
 
 lemlib::Chassis chassis(drivetrain, lateralController, angularController,
